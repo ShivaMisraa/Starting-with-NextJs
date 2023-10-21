@@ -2,35 +2,31 @@
 
 import { useRouter } from "next/router";
 
-const details = [
-
-  { id : '1', name: 'Yash', role: 'Senior Developer'},
-  
-  { id : '2', name: 'Vaibhav', role: 'Backend Developer'},
-  
-  { id : '3', name: 'Suresh', role: 'Frontend Developer'}
-  
-  ];
+export const details = [
+  { id: '1', name: 'Yash', role: 'Senior Developer' },
+  { id: '2', name: 'Vaibhav', role: 'Backend Developer' },
+  { id: '3', name: 'Suresh', role: 'Frontend Developer' }
+];
 
 const DetailsPage = () => {
-  const router= useRouter();
-
-  const teamId= router.query.teamId;
+  const router = useRouter();
+  const teamId = router.query.teamId;
 
   const teamMember = details.find((member) => member.id === teamId);
-  
-    return (
-     <div>
+
+  return (
+    <div>
       {teamMember ? (
         <div>
           <h1>{teamMember.name}</h1>
-          <h1>{teamMember.role}</h1>
+          <p>{teamMember.role}</p>
         </div>
-      ):(
-        <p>Developer Not find!!!</p>
+      ) : (
+        <p>Developer Not found!!!</p>
       )}
-     </div>
-    )
-  }
-  
-  export default DetailsPage;
+    </div>
+  );
+};
+
+export default DetailsPage;
+

@@ -1,9 +1,24 @@
 // our-domain.com/AboutUsPage
 
+import { Fragment } from "react";
+import { details } from "./[teamId]";
+import Link from "next/link";
+
 const AboutUsPage = () => {
-    return (
+  const teamMemberNames = details.map((teamMember) => (
+    <li key={teamMember.id}>
+      <Link href={`/aboutUs/${teamMember.id}`}>
+        {teamMember.name}
+      </Link>
+    </li>
+  ));
+
+  return (
+    <Fragment>
       <h1>This is AboutUs Page</h1>
-    )
-  }
-  
-  export default AboutUsPage;
+      <ul>{teamMemberNames}</ul>
+    </Fragment>
+  );
+};
+
+export default AboutUsPage;
